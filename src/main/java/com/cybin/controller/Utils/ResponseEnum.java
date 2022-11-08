@@ -7,10 +7,6 @@ package com.cybin.controller.Utils;
  */
 public enum ResponseEnum {
    SUCCESS(200,"请求成功");
-
-
-
-
    Integer code;
    String msg;
 
