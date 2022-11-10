@@ -29,6 +29,9 @@ public class ResponseData  {
     public ResponseData ok(String msg){
         return new ResponseData(200,msg);
     }
+    public ResponseData error(){
+        return new ResponseData(400,"error");
+    }
     public ResponseData error(String msg){
         return new ResponseData(400,msg);
     }
@@ -37,7 +40,7 @@ public class ResponseData  {
     }
     public ResponseData setData(Object data)
     {
-        this.setData(data);
+        this.data=data;
         return this;
     }
 }
