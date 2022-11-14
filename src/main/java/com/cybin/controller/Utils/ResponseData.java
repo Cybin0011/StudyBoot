@@ -19,6 +19,12 @@ public class ResponseData  {
     public ResponseData() {
     }
 
+    public ResponseData(Integer code, String msg, Object data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
     public ResponseData(Integer code, String msg) {
         this.code = code;
         this.msg = msg;

@@ -30,7 +30,7 @@ class BookMapperTest {
     @Test
     void getPage()
     {
-        IPage page=new Page(3,3);
+        IPage page=new Page(1,10);
         IPage iPage = bookMapper.selectPage(page, null);
         for (Object record : iPage.getRecords()) {
             System.out.println(record);
