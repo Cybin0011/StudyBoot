@@ -1,5 +1,6 @@
 package com.cybin.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cybin.domain.Book;
 import org.springframework.stereotype.Service;
@@ -11,4 +12,8 @@ import org.springframework.stereotype.Service;
  */
 
 public interface BookService extends IService<Book> {
+
+
+
+    IPage getPage(int current, int size, Book book);
 }

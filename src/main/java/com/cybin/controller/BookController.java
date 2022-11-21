@@ -1,6 +1,7 @@
 package com.cybin.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cybin.controller.Utils.ResponseData;
@@ -32,7 +33,8 @@ public class BookController {
     @GetMapping("/{id}")
     public ResponseData getOne(@PathVariable Integer id){
         if(id<10)
-            throw new BusinessException("请勿操作<10的数据",501);
+//            throw new BusinessException("请勿操作<10的数据",501);
+            throw new NullPointerException("Null Exception!!!!");
         return new ResponseData().ok().setData(bookService.getById(id));
     }
 
@@ -51,9 +53,13 @@ public class BookController {
         return  bookService.updateById(book)?new ResponseData().ok():new ResponseData().error();
     }
     @GetMapping("/{current}/{size}")
-    public ResponseData getPagination(@PathVariable int current,@PathVariable int size){
-        IPage page=new Page(current,size);
-        IPage iPage =bookService.page(page);
+    public ResponseData getPagination(@PathVariable int current,@PathVariable int size,Book book){
+
+        IPage iPage =bookService.getPage( current,size,book);
+        System.out.println("--------------------------------------------");
+        System.out.println(iPage);
+        if(iPage.getPages()>0&&current>iPage.getPages())
+            iPage=bookService.getPage( current,size,book);
         return new ResponseData().ok().setData(iPage);
     }
 }
